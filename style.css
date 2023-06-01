@@ -1,0 +1,12 @@
+body {
+  -webkit-app-region: drag;
+}
+
+.titlebar {
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+}
+
+.timer {
+  font-size: 5rem;
+}

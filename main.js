@@ -3,14 +3,18 @@ const path = require("path");
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 400,
+    height: 125,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
     autoHideMenuBar: true,
+    transparent: true,
     titleBarStyle: "hidden",
-    titleBarOverlay: true,
+    titleBarOverlay: {
+      color: "#2f3241",
+      symbolColor: "#74b1be",
+    },
   });
 
   win.loadFile("index.html");
