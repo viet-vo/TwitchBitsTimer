@@ -15,12 +15,13 @@ const scopes = "channel:read:redemptions";
 app.get("/auth/twitch", (req, res) => {
   res.redirect(
     `https://id.twitch.tv/oauth2/authorize?client_id=${clientID}&redirect_uri=${redirectURI}&response_type=code&scope=${scopes}`
+    //
   );
 });
 
 // Callback endpoint
 app.get("/auth/twitch/callback", async (req, res) => {
-  //   const code = req.query.code;
+  const code = req.query.code;
 
   // Exchange authorization code for access token
   try {
@@ -32,13 +33,14 @@ app.get("/auth/twitch/callback", async (req, res) => {
           client_id: clientID,
           client_secret: clientSecret,
           code: req.query.code,
-          grant_type: "authorization_code",
+          grant_type: "client_credentials",
           redirect_uri: redirectURI,
         },
       }
     );
 
     const accessToken = response.data.access_token;
+    console.log(accessToken);
 
     // Make API request to get channel point redemptions
     try {
@@ -50,7 +52,8 @@ app.get("/auth/twitch/callback", async (req, res) => {
             Authorization: `Bearer ${accessToken}`,
           },
           params: {
-            broadcaster_id: "aiyo_chu",
+            broadcaster_id: "sunbeartwitch",
+            reward_id: "boop",
           },
         }
       );
