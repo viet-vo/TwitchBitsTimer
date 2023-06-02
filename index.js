@@ -52,7 +52,7 @@ app.get("/auth/twitch/callback", async (req, res) => {
             Authorization: `Bearer ${accessToken}`,
           },
           params: {
-            broadcaster_id: "sunbeartwitch",
+            broadcaster_id: "aiyo_chu",
             reward_id: "boop",
           },
         }
