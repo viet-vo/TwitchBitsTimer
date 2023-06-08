@@ -1,6 +1,17 @@
 const { app, BrowserWindow, Menu } = require("electron");
 const path = require("path");
 
+// import { ElectronAuthProvider } from "@twurple/auth-electron";
+// require("dotenv").config();
+
+const clientId = process.env.TWITCH_CLIENT_ID;
+const redirectUri = process.env.TWITCH_REDIRECT_URI;
+
+// const authProvider = new ElectronAuthProvider({
+//   clientId,
+//   redirectUri,
+// });
+
 function createWindow() {
   const win = new BrowserWindow({
     width: 400,

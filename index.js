@@ -12,6 +12,7 @@ const redirectURI = process.env.TWITCH_REDIRECT_URI;
 const scopes = "channel:read:redemptions";
 
 // Authorization endpoint
+console.log("Authorization endpoint");
 app.get("/auth/twitch", (req, res) => {
   res.redirect(
     `https://id.twitch.tv/oauth2/authorize?client_id=${clientID}&redirect_uri=${redirectURI}&response_type=code&scope=${scopes}`
@@ -20,8 +21,9 @@ app.get("/auth/twitch", (req, res) => {
 });
 
 // Callback endpoint
+console.log("Callback endpoint");
 app.get("/auth/twitch/callback", async (req, res) => {
-  const code = req.query.code;
+  // const code = req.query.code;
 
   // Exchange authorization code for access token
   try {
@@ -39,10 +41,12 @@ app.get("/auth/twitch/callback", async (req, res) => {
       }
     );
 
-    const accessToken = response.data.access_token;
+    const accessToken = "rzygxfd10z4neef9g7pn3qma6aj76v";
+    // response.data.access_token;
     console.log(accessToken);
 
     // Make API request to get channel point redemptions
+    console.log("Make API request to get channel point redemptions");
     try {
       const redemptionsResponse = await axios.get(
         "https://api.twitch.tv/helix/channel_points/custom_rewards/redemptions",
@@ -53,7 +57,7 @@ app.get("/auth/twitch/callback", async (req, res) => {
           },
           params: {
             broadcaster_id: "aiyo_chu",
-            reward_id: "boop",
+            reward_id: "Posture Check!",
           },
         }
       );
