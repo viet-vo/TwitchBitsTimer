@@ -8,22 +8,23 @@
 
     <p><a href="https://id.twitch.tv/oauth2/authorize?client_id=hozgh446gdilj5knsrsxxz8tahr3koz&redirect_uri=%2Ftwitch_misc%2Fauthentication%2Felectron%2Fwebpage%2F&response_type=token">Login with Twitch</a></a></p>
 
-    <p>For further help checkout the <a href="https://github.com/BarryCarlyon/twitch_misc">Repo</a> or <a href="https://link.twitch.tv/devchat">Join us on Discord</a></p>
+    <p>Porject repository: <a href="https://github.com/BarryCarlyon/twitch_misc">Repo</a> or <a href="https://link.twitch.tv/devchat">Join us on Discord</a></p>
 
     <script type="text/javascript">
         if (document.location.hash && document.location.hash != '') {
             var parsedHash = new URLSearchParams(window.location.hash.slice(1));
             if (parsedHash.get('access_token')) {
                 // try for electron?
-                window.location.href = `twitch-misc-example://twitchauth/${parsedHash.get('access_token')}`;
+                window.location.href = `aiyo_timer://twitchauth/${parsedHash.get('access_token')}`;
                 // and tidy up
-                window.location.href = 'https://barrycarlyon.github.io/twitch_misc/authentication/electron/webpage/#safetoclose';
+                window.location.href = 'https://viet-vo.github.io/TwitchBitsTimer/redirect';
                 // and tell the user they can close the page
                 output.textContent = 'It is safe to close this window';
             }
         } else {
             // attempt redirect
-            window.location.href = 'https://id.twitch.tv/oauth2/authorize?client_id=hozgh446gdilj5knsrsxxz8tahr3koz&redirect_uri=https%3A%2F%2Fbarrycarlyon.github.io%2Ftwitch_misc%2Fauthentication%2Felectron%2Fwebpage%2F&response_type=token';
+            window.location.href = 'https://github.com/viet-vo/TwitchBitsTimer';
+            output.textContent = 'Failed to redirect';
         }
     </script>
 </body>
