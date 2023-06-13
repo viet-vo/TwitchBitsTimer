@@ -1,16 +1,32 @@
 const { app, BrowserWindow, Menu } = require("electron");
+//const { URL, URLSearchParams } = require('url');
 const path = require("path");
+const fetch = require("electron-fetch").default;
+const gotTheLock = app.requestSingleInstanceLock();
 
-// import { ElectronAuthProvider } from "@twurple/auth-electron";
-// require("dotenv").config();
+if (!gotTheLock) {
+  app.quit();
+  return;
+}
 
-const clientId = process.env.TWITCH_CLIENT_ID;
-const redirectUri = process.env.TWITCH_REDIRECT_URI;
+let win;
 
-// const authProvider = new ElectronAuthProvider({
-//   clientId,
-//   redirectUri,
-// });
+app.on("second-instance", (event, commandLine, workingDirectory) => {
+  // Someone tried to run a second instance, we should focus our window.
+  if (win) {
+    if (win.isMinimized()) {
+      win.restore();
+    }
+    win.focus();
+  }
+
+  let input = commandLine.pop();
+  let url = new URL(input);
+  if (url.host == "twitchauth") {
+    let pathparts = url.pathname.split("/");
+    runToken(pathparts[1]);
+  }
+});
 
 function createWindow() {
   const win = new BrowserWindow({
