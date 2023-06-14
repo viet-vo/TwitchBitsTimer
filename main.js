@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain, shell } = require("electron");
 //const { URL, URLSearchParams } = require('url');
 const path = require("path");
 const fetch = require("electron-fetch").default;
@@ -49,13 +49,13 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
-    autoHideMenuBar: true,
-    transparent: true,
-    titleBarStyle: "hidden",
-    titleBarOverlay: {
-      color: "#2f3241",
-      symbolColor: "#74b1be",
-    },
+    // autoHideMenuBar: true,
+    // transparent: true,
+    // titleBarStyle: "hidden",
+    // titleBarOverlay: {
+    //   color: "#2f3241",
+    //   symbolColor: "#74b1be",
+    // },
   });
 
   win.loadFile("index.html");
@@ -67,6 +67,9 @@ app.whenReady().then(() => {
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow();
+      setTimeout(() => {
+        win.webContents.openDevTools();
+      }, 500);
     }
   });
 });
@@ -74,6 +77,22 @@ app.whenReady().then(() => {
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();
+  }
+});
+
+ipcMain.on("openWeb", (e, url) => {
+  if (url.startsWith("http://") || url.startsWith("https://")) {
+    // URLs starting with "http://" or "https://" will be opened in the default browser
+    shell.openExternal(url);
+  } else {
+    // Deep links or custom URIs
+    if (process.platform === "win32") {
+      // On Windows, we need to use a workaround to open deep links
+      shell.openExternal('cmd.exe', ['/c', 'start', url]);
+    } else {
+      // On other platforms, use the regular method
+      shell.openExternal(url, { activate: true });
+    }
   }
 });
 

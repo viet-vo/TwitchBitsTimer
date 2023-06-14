@@ -1,10 +1,13 @@
-console.log('loaded');
+console.log("loaded");
 
-document.addEventListener('click', (e) => {
-    if (e.target.tagName == 'A') {
-        e.preventDefault();
-        window.electron.openWeb(e.target.getAttribute('href'));
-    }
+document.addEventListener("click", (e) => {
+  if (e.target.tagName == "button") {
+    e.preventDefault();
+    window.electron.openWeb(e.target.getAttribute("href"));
+  }
+});
+document.getElementById("open-in-browser").addEventListener("click", () => {
+  window.shell.open();
 });
 
 // Display response object in table form
