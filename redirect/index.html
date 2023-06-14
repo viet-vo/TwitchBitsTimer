@@ -1,14 +1,14 @@
 <html>
 <head>
     <title>Electron Authentication Page | Barry's Live/Testable Twitch examples</title>
-    <link rel="stylesheet" href="/twitch_misc/style.css" />
+    <link rel="stylesheet" href="" />
 </head>
 <body>
     <div id="output">Please click this link to continue if not automatically redirected</div>
 
     <p><a href="https://id.twitch.tv/oauth2/authorize?client_id=hozgh446gdilj5knsrsxxz8tahr3koz&redirect_uri=%2Ftwitch_misc%2Fauthentication%2Felectron%2Fwebpage%2F&response_type=token">Login with Twitch</a></a></p>
 
-    <p>Porject repository: <a href="https://github.com/BarryCarlyon/twitch_misc">Repo</a> or <a href="https://link.twitch.tv/devchat">Join us on Discord</a></p>
+    <p>Project repository: <a href="https://github.com/viet-vo/TwitchBitsTimer'">Repo</a> or <a href="https://link.twitch.tv/devchat">Join us on Discord</a></p>
 
     <script type="text/javascript">
         if (document.location.hash && document.location.hash != '') {
@@ -23,8 +23,8 @@
             }
         } else {
             // attempt redirect
-            window.location.href = 'https://github.com/viet-vo/TwitchBitsTimer';
-            output.textContent = 'Failed to redirect';
+            window.location.href = 'https://id.twitch.tv/oauth2/authorize?client_id=hozgh446gdilj5knsrsxxz8tahr3koz&redirect_uri=%2Ftwitch_misc%2Fauthentication%2Felectron%2Fwebpage%2F&response_type=token';
+            // output.textContent = 'Failed to redirect';
         }
     </script>
 </body>
