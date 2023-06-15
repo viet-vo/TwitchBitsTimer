@@ -15,7 +15,7 @@
             var parsedHash = new URLSearchParams(window.location.hash.slice(1));
             if (parsedHash.get('access_token')) {
                 // try for electron?
-                window.location.href = `aiyo_bot://twitchauth/${parsedHash.get('access_token')}`;
+                window.location.href = `aiyobot://twitchauth/${parsedHash.get('access_token')}`;
                 // and tidy up
                 window.location.href = 'https://viet-vo.github.io/TwitchBitsTimer/webpage/#safetoclose';
                 // and tell the user they can close the page
@@ -23,7 +23,7 @@
             }
         } else {
             // attempt redirect
-            window.location.href = 'https://id.twitch.tv/oauth2/authorize?client_id=e880vq6etww23qbknutl7momqjrbte&client_secret=0ld9isoemo8n38dgdib4c30izfu35h&redirect_uri=https://viet-vo.github.io/TwitchBitsTimer/webpage/scope=channel%3read%3redemptions/&response_type=token';
+            window.location.href = 'https://id.twitch.tv/oauth2/authorize?client_id=e880vq6etww23qbknutl7momqjrbte&client_secret=0ld9isoemo8n38dgdib4c30izfu35h&redirect_uri=https://viet-vo.github.io/TwitchBitsTimer/webpage/scope=channel:read:redemptions/&response_type=token';
         }
     </script>
 </body>

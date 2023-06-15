@@ -35,10 +35,10 @@ Custom URI Handler
 */
 if (process.defaultApp) {
     if (process.argv.length >= 2) {
-        app.setAsDefaultProtocolClient('aiyo_bot', process.execPath, [path.resolve(process.argv[1])]);
+        app.setAsDefaultProtocolClient('aiyobot', process.execPath, [path.resolve(process.argv[1])]);
     }
 } else {
-    app.setAsDefaultProtocolClient('aiyo_bot');
+    app.setAsDefaultProtocolClient('aiyobot');
 }
 
 /*
