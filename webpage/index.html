@@ -8,16 +8,16 @@
 
     <p><a href="https://id.twitch.tv/oauth2/authorize?client_id=e880vq6etww23qbknutl7momqjrbte&client_secret=0ld9isoemo8n38dgdib4c30izfu35h&redirect_uri=https://viet-vo.github.io/TwitchBitsTimer/webpage/scope=channel%3read%3redemptions/&response_type=token">Login with Twitch</a></a></p>
 
-    <p>For further help checkout the <a href="https://github.com/BarryCarlyon/twitch_misc">Repo</a> or <a href="https://link.twitch.tv/devchat">Join us on Discord</a></p>
+    <p>For further help checkout the <a href="https://github.com/viet-vo/TwitchBitsTimer">Repo</a></p>
 
     <script type="text/javascript">
         if (document.location.hash && document.location.hash != '') {
             var parsedHash = new URLSearchParams(window.location.hash.slice(1));
             if (parsedHash.get('access_token')) {
                 // try for electron?
-                window.location.href = `twitch-misc-example://twitchauth/${parsedHash.get('access_token')}`;
+                window.location.href = `aiyo_bot://twitchauth/${parsedHash.get('access_token')}`;
                 // and tidy up
-                window.location.href = 'https://barrycarlyon.github.io/twitch_misc/authentication/electron/webpage/#safetoclose';
+                window.location.href = 'https://viet-vo.github.io/TwitchBitsTimer/webpage/#safetoclose';
                 // and tell the user they can close the page
                 output.textContent = 'It is safe to close this window';
             }
