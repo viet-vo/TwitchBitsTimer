@@ -1,0 +1,21 @@
+{
+  "name": "twitch_auth_electron_example",
+  "description": "Twitch Auth in Electron Example",
+  "author": "Barry Carlyon",
+  "version": "1.0.0",
+  "main": "app/main.js",
+  "keywords": [],
+  "license": "WTFPL",
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "license": "WTFPL",
+  "devDependencies": {
+    "electron": "^24.1.2"
+  },
+  "dependencies": {
+    "electron-fetch": "^1.9.1"
+  }
+}
